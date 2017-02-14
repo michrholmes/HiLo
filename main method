@@ -1,0 +1,51 @@
+//***************************************************************************************
+// HiLo.java            Author: Michelle Holmes   
+//
+// This program creates a Hi-Lo number guessing game using nested loops. 
+//***************************************************************************************
+import java.util.*;  // importing both Scanner and Random class 
+
+public class HiLo 
+{
+	//---------------------------------------------------------------------------------
+	// Creates a number guessing game where user inputs a guessed number compared against
+	//  a random number generator. User is told if guessed number correct, high or low.
+	// Once game completed user is given choice to play again or end game. 
+	//---------------------------------------------------------------------------------
+	public static void main(String[] args) 
+	{
+		int play, guess, num;                     // declares int variables.
+		
+		Scanner scan = new Scanner(System.in);   // instantiates new scanner object.
+		
+		do    // first outer loop for user to play the guessing game.
+		{
+			System.out.println("Lets play a Hi-Lo number guessing game.");
+			
+			Random generator = new Random();      // instantiates random number generator.
+			num = generator.nextInt(100) + 1;     // random number generator chooses number from 1-100.
+			
+			do  // inner loop to input users guessed number and decide if guess is high/low or correct.
+			{
+				System.out.println("Guess a number between 1-100: ");  // Requests users number guess.
+				guess = scan.nextInt();                // scans users number and places it in variable "guess".
+		
+					if (guess == num)          // if-else loop to output if guess is correct or not.
+						System.out.println("Your guess is correct the number is: " + num);
+					else
+						if (guess < num)   // if-else to output if guess is low or high.
+							System.out.println("Guess is too low.");
+						else 
+							System.out.println("Guess is too high.");
+			} while (guess != num);  // inner do loop condition 
+		                          // if guess is incorrect, guess loop will re-iterate.
+			
+			System.out.println("If you want to play again press 1 (Press anything else to quit): ");
+			play = scan.nextInt();   // if guess correct user chooses to play again by pressing 1 or anything else to quit.
+		
+		} while (play == 1);  // condition of outer do loop to play again. 
+		
+		System.out.println("It was great playing with you! Goodbye!"); // Goodbye message after user terminates game.
+		}
+	}
+
